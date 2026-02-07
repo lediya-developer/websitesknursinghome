@@ -61,6 +61,35 @@
       display: block; 
       margin-top: 3px;
        }
+       @media (max-width: 768px) {
+  .top-bar {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .top-bar .text {
+    font-size: 1.1em;
+  }
+
+  .contact-info {
+    font-size: 0.8em;
+  }
+
+  .card {
+    flex: 1 1 100%;
+  }
+
+  iframe {
+    width: 100%;
+    height: 300px;
+  }
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+@media (max-width: 480px) { body { font-size: 14px; } }
     /*.....*/
     .b1_container_text {
       padding: 20px;
@@ -137,6 +166,7 @@
       color: #BFD8B8;
       font-style: inherit;
     }
+    @media (max-width: 768px) { .navbar { flex-direction: column; } .hero-text { font-size: 1.2rem; } }
   </style>
 </head>
 <body>
@@ -158,8 +188,7 @@
     </div>
   </div>
 <div class="b1_container_text">
-    <h1>WE <span>FAMILIES TRUST US</span> -  <h4>Love, care, and togetherness — your family is our family.</h4> </h1>
- 
+   <h1>WE <span>FAMILIES TRUST US</span></h1> <h4>Love, care, and togetherness — your family is our family.</h4>
 			<p>We’ve been pioneers in home-based elder care for over 10+ years, delivering top-quality health services across Chennai’s neighborhoods. 
 Our mission is to empower seniors to live independently and with dignity, enhancing their quality of life while they remain in the comfort of their own homes.
 
@@ -221,15 +250,15 @@ Now, we’re proud to expand our trusted services to Chengalpattu, Ranipet, Vell
       </div>
        <div class="card">
         <h4>Equipment support</h4>
-        <p>whether its a absence caretaker & unexpected situation happened
-            we ensuring and provide replacement caretaker </p>
-      </div>
-      <div class="card">
-        <h4>Seamless Replacement support</h4>
-        <p>we provide surigical instruments like o2 machine,
+         <p>we provide surigical instruments like o2 machine,
            cot, hair bed, wheel chair , iv stand, bipap machine,
             cipap machine and many more for rent and own purchases </p>
-      </div>
+        </div>
+      <div class="card">
+        <h4>Seamless Replacement support</h4>
+         <p>whether its a absence caretaker & unexpected situation happened
+            we ensuring and provide replacement caretaker </p>
+           </div>
   </div>
 
 <!-- Specifications Section -->
