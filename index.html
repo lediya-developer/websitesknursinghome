@@ -4,12 +4,13 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SK NURSING HOME CARE</title>
+
   <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: rgb(250, 244, 244); /* Ivory Mist */
-      color: #004F4C; /* Deep Charcoal */
+      background: rgb(250, 244, 244);
+      color: #004F4C;
     }
 
     /* Top Bar */
@@ -17,79 +18,178 @@
       display: grid;
       grid-template-columns: 1fr auto 1fr;
       align-items: center;
-      background: #f0dee4; /* Tranquil Teal */
-      color: #004F4C;
+      background: #f0dee4;
       padding: 5px 5px;
       gap: 100px;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     }
 
-    .top-bar.logo {
-      justify-self: start;  
+    .top-bar .logo {
+      justify-self: start;
     }
-    .top-bar.text {
+
+    .top-bar .text {
       font-style: oblique;
-      font-weight: 800; 
+      font-weight: 800;
       letter-spacing: 1px;
-       /* modern spacing */ 
-       text-transform: uppercase;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      text-transform: uppercase;
       font-size: 0.95em;
-      display: flex; 
+      display: flex;
       justify-self: center;
       gap: 30px;
     }
 
-    .top-bar.contact-info {
+    .contact-info {
       justify-self: end;
       font-size: 0.7em;
-      flex-direction: column; 
       text-align: right;
-      row-gap: 20px; 
     }
-    .top-bar.contact-info.top{
+
+    .contact-info .top {
       display: flex;
-      gap: 20px; 
+      gap: 20px;
     }
-     .top-bar.contact-info.bottom{
-      margin-top: 3px
-    }
-    .email { 
-      display: inline-block; 
-     }
-     .phone { 
-      display: block; 
+
+    .contact-info .bottom {
       margin-top: 3px;
-       }
-       @media (max-width: 768px) {
-  .top-bar {
-    flex-direction: column;
-    text-align: center;
-  }
+    }
 
-  .top-bar .text {
-    font-size: 1.1em;
-  }
+    /* Floating Buttons */
+    .float-btn {
+      position: fixed;
+      right: 20px;
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      color: white;
+      text-align: center;
+      font-size: 28px;
+      line-height: 55px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      text-decoration: none;
+      z-index: 999;
+      cursor: pointer;
+      animation: fadeIn 1s ease-in-out;
+      transition: transform 0.2s ease;
+    }
 
-  .contact-info {
-    font-size: 0.8em;
-  }
+    .float-btn:hover {
+      transform: scale(1.15);
+    }
 
-  .card {
-    flex: 1 1 100%;
-  }
+    .call-btn {
+      bottom: 150px;
+      background: #004F4C;
+      animation: pulse 2s infinite;
+    }
 
-  iframe {
-    width: 100%;
-    height: 300px;
-  }
-}
+    .whatsapp-btn {
+      bottom: 85px;
+      background: #25D366;
+      font-size: 30px;
+      animation: pulse 2.2s infinite;
+    }
 
-img {
-  max-width: 100%;
-  height: auto;
-}
-@media (max-width: 480px) { body { font-size: 14px; } }
+    .email-btn {
+      bottom: 20px;
+      background: #d44638;
+      font-size: 26px;
+      animation: pulse 2.4s infinite;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+
+    /* Popup Form */
+    .popup-bg {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .popup-box {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 400px;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .popup-box h2 {
+      margin-bottom: 15px;
+      color: #004F4C;
+    }
+
+    .popup-box input,
+    .popup-box textarea {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    .error {
+      color: red;
+      font-size: 0.8em;
+      text-align: left;
+      margin-top: -5px;
+      margin-bottom: 5px;
+    }
+
+    .popup-box button {
+      width: 100%;
+      padding: 12px;
+      background: #004F4C;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    /* Thank You Popup */
+    .thankyou-box {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+    }
+
+    .thankyou-content {
+      background: white;
+      padding: 25px;
+      width: 90%;
+      max-width: 350px;
+      border-radius: 8px;
+      text-align: center;
+      color: #004F4C;
+      font-size: 1.1em;
+    }
+    @media (max-width: 480px) { body { font-size: 14px; } }
     /*.....*/
     .b1_container_text {
       padding: 20px;
@@ -110,7 +210,7 @@ img {
       font-size: 0.9em;
       line-height: 1.6;
     }
-    /* Box Section */
+     /* Box Section */
     .info-box {
       background:#f0e2e7;
       margin: 20px;
@@ -145,7 +245,7 @@ img {
       font-size: 0.9em;
       font-style: oblique;
     }
-    .card-grid {
+     .card-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 20px;
@@ -166,25 +266,28 @@ img {
       color: #BFD8B8;
       font-style: inherit;
     }
-    @media (max-width: 768px) { .navbar { flex-direction: column; } .hero-text { font-size: 1.2rem; } }
+     @media (max-width: 768px) { .navbar { flex-direction: column; } .hero-text { font-size: 1.2rem; } }
   </style>
 </head>
+
 <body>
 
   <!-- Top Bar -->
   <div class="top-bar">
-    <div class="logo"> <img src="images/newlif.png" alt="Company Logo" class="logo"></div>
-      <div class="text">SK NURSING HOME CARE</div>
+    <div class="logo">
+      <img src="images/newlif.png" alt="Company Logo" class="logo">
+    </div>
+
+    <div class="text">SK NURSING HOME CARE</div>
+
     <div class="contact-info">
       <div class="top">
-         <span class="phone1">📞 +91-7871708312</span> 
-        <span class="email">|+91-8939618401</span>
-        </div> 
+        <span>📞 +91-7871708312</span>
+        <span>| +91-8939618401</span>
+      </div>
       <div class="bottom">
-        <span class="phone2">✉️ selvasham184@gmail.com </span>
-       </div>
-    </div>
-       
+        <span>✉️ selvasham184@gmail.com</span>
+      </div>
     </div>
   </div>
 <div class="b1_container_text">
@@ -195,8 +298,7 @@ Our mission is to empower seniors to live independently and with dignity, enhanc
 Now, we’re proud to expand our trusted services to Chengalpattu, Ranipet, Vellore, and Tirupathur—bringing compassionate care to more families across Tamil Nadu
 </p>
 		</div>
-  </div>
-  <!-- Info Box -->
+     <!-- Info Box -->
   <div class="info-box">
     <h3>OUR SERVICES</h3>
      <p>Our trained care takers offer a range of services to meet your unique needs. From aiding with daily activities such as bathing, dressing, medication management to providing companionship 
@@ -260,8 +362,7 @@ Now, we’re proud to expand our trusted services to Chengalpattu, Ranipet, Vell
             we ensuring and provide replacement caretaker </p>
            </div>
   </div>
-
-<!-- Specifications Section -->
+  <!-- Specifications Section -->
 <div class="inside-info-box">
   <h3> Our Specifications</h3>
   <ul>
@@ -274,28 +375,103 @@ Now, we’re proud to expand our trusted services to Chengalpattu, Ranipet, Vell
     <li> Compassionate caregivers trained in elder wellness</li>
   </ul>
 </div>
-  <!-- Contact Form -->
-  <!--<div class="contact-form">
-    <h2>Contact Us</h2>
-    <form>
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" />
-
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" />
-
-      <label for="enquiry">
-        <input type="checkbox" id="enquiry" name="enquiry" />
-        I have an enquiry about home care services
-      </label>
-
-      <button type="submit">Submit</button>
-    </form>
-  </div>-->
-  <!-- Locations Section -->
 <div class="inside-info-box">
   <h2>📍 Our Service Locations</h2>
   <p>We proudly serve elders across Tamil Nadu with personalized home care services in the following regions:</p>
   <iframe src="https://www.google.com/maps/d/embed?mid=1viZ6eQ-Ctqho6zjC5Ym1tNtYE2n9d6g&ehbc=2E312F&noprof=1" width="640" height="480" allowfullscreen></iframe>
+
+  <!-- Floating Buttons -->
+  <a href="tel:+917871708312" class="float-btn call-btn" onclick="vibrate()">📞</a>
+  <a href="https://wa.me/917871708312?text=Hello%20I%20need%20home%20nursing%20service" class="float-btn whatsapp-btn" onclick="vibrate()">💬</a>
+  <a class="float-btn email-btn" onclick="openForm(); vibrate()">✉️</a>
+
+  <!-- Email Popup Form -->
+  <div class="popup-bg" id="popupForm">
+    <div class="popup-box">
+      <h2>Contact Us</h2>
+
+      <form id="contactForm" onsubmit="validateForm(event)">
+        <input type="text" id="name" placeholder="Your Name">
+        <div id="nameError" class="error"></div>
+
+        <input type="email" id="email" placeholder="Your Email">
+        <div id="emailError" class="error"></div>
+
+        <textarea id="message" rows="4" placeholder="Your Message"></textarea>
+        <div id="messageError" class="error"></div>
+
+        <button type="submit">Send Message</button>
+      </form>
+
+      <button style="margin-top:10px;background:#d44638" onclick="closeForm()">Close</button>
+    </div>
+  </div>
+
+  <!-- Thank You Popup -->
+  <div class="thankyou-box" id="thankyouBox">
+    <div class="thankyou-content">
+      Thank you! Your message has been sent.
+      <br><br>
+      <button onclick="closeThankyou()" style="padding:10px 20px;background:#004F4C;color:white;border:none;border-radius:6px;">OK</button>
+    </div>
+  </div>
+
+  <script>
+    /* Vibration Feedback */
+    function vibrate() {
+      if (navigator.vibrate) {
+        navigator.vibrate(60);
+      }
+    }
+
+    /* Open & Close Form */
+    function openForm() {
+      document.getElementById("popupForm").style.display = "flex";
+    }
+
+    function closeForm() {
+      document.getElementById("popupForm").style.display = "none";
+    }
+
+    /* Form Validation */
+    function validateForm(event) {
+      event.preventDefault();
+
+      let valid = true;
+
+      const name = document.getElementById("name").value.trim();
+      const email = document.getElementById("email").value.trim();
+      const message = document.getElementById("message").value.trim();
+
+      document.getElementById("nameError").innerHTML = "";
+      document.getElementById("emailError").innerHTML = "";
+      document.getElementById("messageError").innerHTML = "";
+
+      if (name.length < 2) {
+        document.getElementById("nameError").innerHTML = "Please enter your name.";
+        valid = false;
+      }
+
+      if (!email.includes("@") || !email.includes(".")) {
+        document.getElementById("emailError").innerHTML = "Enter a valid email.";
+        valid = false;
+      }
+
+      if (message.length < 5) {
+        document.getElementById("messageError").innerHTML = "Message must be at least 5 characters.";
+        valid = false;
+      }
+
+      if (valid) {
+        closeForm();
+        document.getElementById("thankyouBox").style.display = "flex";
+      }
+    }
+
+    function closeThankyou() {
+      document.getElementById("thankyouBox").style.display = "none";
+    }
+  </script>
+
 </body>
 </html>
