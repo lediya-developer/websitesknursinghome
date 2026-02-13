@@ -266,6 +266,7 @@
       color: #BFD8B8;
       font-style: inherit;
     }
+	  .map-container { position: relative; width: 100%; padding-bottom: 56.25%; /* 16:9 ratio */ height: 0; overflow: hidden; border-radius: 10px; /* optional */ } .map-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
      @media (max-width: 768px) { .navbar { flex-direction: column; } .hero-text { font-size: 1.2rem; } }
   </style>
 </head>
@@ -378,8 +379,11 @@ Now, we’re proud to expand our trusted services to Chengalpattu, Ranipet, Vell
 <div class="inside-info-box">
   <h2>📍 Our Service Locations</h2>
   <p>We proudly serve elders across Tamil Nadu with personalized home care services in the following regions:</p>
+	<div class="map-container">
  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.758928900203!2d80.18844587412053!3d12.987264914536555!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dff6556244d%3A0x7583ec63be9c4639!2s4%2C%2036th%20St%2C%20Nanganallur%2C%20Thillaiganga%20Nagar%2C%20Nanganallur%2C%20Chennai%2C%20Tamil%20Nadu%20600061!5e0!3m2!1sen!2sin!4v1770979858199!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-  <!-- Floating Buttons -->
+	</div>
+	</div>
+	<!-- Floating Buttons -->
   <a href="tel:+917871708312" class="float-btn call-btn" onclick="vibrate()">📞</a>
   <a href="https://wa.me/917871708312?text=Hello%20I%20need%20home%20nursing%20service" class="float-btn whatsapp-btn" onclick="vibrate()">💬</a>
   <a class="float-btn email-btn" onclick="openForm(); vibrate()">✉️</a>
